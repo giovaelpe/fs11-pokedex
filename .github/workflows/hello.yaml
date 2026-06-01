@@ -9,5 +9,5 @@ jobs:
     hello_world_job:
         runs-on: ubutu-latest
         steps:
-            - name: Say hello
+          - name: Say hello
             run: echo "Hello World!"
