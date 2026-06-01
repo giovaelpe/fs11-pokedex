@@ -7,7 +7,7 @@ on:
 
 jobs: 
     hello_world_job:
-        runs-on: ubutun-latest
+        runs-on: ubutu-latest
         steps:
             - name: Say hello
-            - run: | echo "Hello World!"
+            run: echo "Hello World!"
