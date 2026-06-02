@@ -16,7 +16,7 @@ primary_region = 'lhr'
   min_machines_running = 0
   processes = ['app']
 
-  [http_service.checks]
+  [[http_service.checks]]
     type = "http"
     interval = "10s"
     timeout = "2s"
