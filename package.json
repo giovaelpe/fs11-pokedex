@@ -35,7 +35,8 @@
     "testEnvironment": "jsdom",
     "setupFiles": [
       "<rootDir>/jest.setup.js"
-    ]
+    ],
+    "testPathIgnorePatterns": ["tests"]
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
