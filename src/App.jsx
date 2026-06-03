@@ -41,7 +41,6 @@ const App = () => {
           <PokemonPage pokemonList={pokemonList} previous={previous} next={next} />
         } />
       </Routes>
-      <b>This is the other branch</b>
     </>
   )
 }
