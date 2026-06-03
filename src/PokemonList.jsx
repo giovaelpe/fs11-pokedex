@@ -13,6 +13,7 @@ const PokemonList = ({ pokemonList }) => {
           </div>
         </Link>
       ))}
+      <span>esta es la otra branch</span>
     </div>
   )
 }
