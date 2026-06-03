@@ -41,6 +41,14 @@ const PokemonPage = ({ previous, next }) => {
           <div className="pokemon-stats" data-testid="stats">
             <table>
               <tbody>
+                <tr>
+                  <td className="pokemon-stats-name">Height:</td>
+                  <td className="pokemon-stats-value">{pokemon.height}</td>
+                </tr>
+                <tr>
+                  <td className="pokemon-stats-name">Weight</td>
+                  <td className="pokemon-stats-value">{pokemon.weight}</td>
+                </tr>
                 {stats.map(({ name, value }) => (
                   <tr key={name}>
                     <td className="pokemon-stats-name">{name}</td>
