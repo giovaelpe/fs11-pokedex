@@ -7,11 +7,13 @@ on:
 jobs:
     taging:
         runs-on: ubuntu-latest
+        permissions:
+          contents: write
         steps:
         - uses: actions/checkout@v6
           with:
             ref: $${{github.event.pull_request.merge_commit_sha}}
-            fetch-depth: '0'
+            fetch-depth: 0
         - name: Add tag
           uses: anothrNick/github-tag-action@1.75.0
           env:
