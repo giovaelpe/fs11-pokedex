@@ -18,3 +18,7 @@ jobs:
             run: date
           - name: Run ls -l
             run: ls -l
+          - name: Testing skip
+            env:
+              MESSAGE : ${{toJson(github.event.commits.*.message)}}
+            run: echo $MESSAGE
