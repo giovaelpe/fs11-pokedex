@@ -19,7 +19,5 @@ jobs:
           - name: Run ls -l
             run: ls -l
           - name: Testing skip
-            env:
-              MESSAGE : ${{join(toJson(github.event.commits.*.message), '')}}
-            if: ${{!contains(github.env.MESSAGE, '#skip')}}
+            if: ${{!contains(join(github.event.commits.*.message, ''), '#skip')}}
             run: echo 'se imprime porque no hay skip'
