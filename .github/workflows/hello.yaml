@@ -21,4 +21,5 @@ jobs:
           - name: Testing skip
             env:
               MESSAGE : ${{toJson(github.event.commits.*.message)}}
+            if: ${{!contains(github.env.MESSAGE, '#skip')}}
             run: echo $MESSAGE
