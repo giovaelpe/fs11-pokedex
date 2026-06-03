@@ -21,4 +21,5 @@ jobs:
           - name: Testing skip
             env:
               MESSAGE : ${{join(toJson(github.event.commits.*.message), '')}}
-            run: echo $MESSAGE
+            if: ${{!contains(github.env.MESSAGE, '#skip')}}
+            run: echo 'se imprime porque no hay skip'
