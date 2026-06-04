@@ -1,0 +1,15 @@
+name: Periodic check
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: URL Health Check
+        uses: Jtalk/url-health-check-action@v5
+        with:
+          url: https://fs11-pokedex-jaunty-stream-108.fly.dev/
+          max-attempts: 3
+          retry-delay: 5s
