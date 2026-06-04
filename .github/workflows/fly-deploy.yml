@@ -7,22 +7,22 @@ on:
       - main
 jobs:
   deploy:
-    if: ${{github.event_name == 'push' && !contains(join(github.event.commits.*.message, ''), '#skip')}}
     name: Deploy app
     runs-on: ubuntu-latest
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
+        if: ${{github.event_name == 'push' && !contains(join(github.event.commits.*.message, ''), '#skip')}}
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   discord-success:
     needs: deploy
     runs-on: ubuntu-latest
-    if: ${{success()}}
     steps:
       - uses: sarisia/actions-status-discord@v1
+        if: ${{success()}}
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           color: 0x00ff00
@@ -31,9 +31,9 @@ jobs:
   discord-failure:
     needs: deploy
     runs-on: ubuntu-latest
-    if: ${{failure()}}
     steps:
       - uses: sarisia/actions-status-discord@v1
+        if: ${{failure()}}
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           color: 0xff0000
