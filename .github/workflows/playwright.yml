@@ -27,3 +27,27 @@ jobs:
                 name: playwright-report
                 path: playwright-report/
                 retention-days: 30
+    discord-success:
+      needs: e2e-tests
+      runs-on: ubuntu-latest
+      if: ${{success()}}
+      steps:
+        - uses: sarisia/actions-status-discord@v1
+          with:
+            webhook: ${{ secrets.DISCORD_WEBHOOK }}
+            color: 0x00ff00
+            title: deploy successful!
+            description: All test have passed!
+            username: giovaelpe
+    discord-failure:
+      needs: e2e-tests
+      runs-on: ubuntu-latest
+      if: ${{failure()}}
+      steps:
+        - uses: sarisia/actions-status-discord@v1
+          with:
+            webhook: ${{ secrets.DISCORD_WEBHOOK }}
+            color: 0xff0000
+            title: deplay failed!
+            description: Some tests failed!
+            username: giovaelpe
