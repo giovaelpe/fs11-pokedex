@@ -4,11 +4,16 @@ on:
     push:
         branches:
             - main
+    pull_request:
+        branches: [main]
+        types: [opened, synchronize]
 
 
 jobs:
     simple_deployment_pipeline:
         runs-on: ubuntu-latest
+        permissions:
+          contents: write
         steps:
           - uses: actions/checkout@v6
           - uses: actions/setup-node@v6
@@ -22,3 +27,9 @@ jobs:
             run: npm run test
           - name: build app
             run: npm run build
+          - name: Bump tag
+            if: github.event_name == 'push'
+            uses: anothrNick/github-tag-action@1.75.0
+            env:
+              GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
