@@ -5,7 +5,7 @@ describe('Pokedex', () => {
     test('Front page can be opened', async({page}) => {
         await page.goto('');
         await expect(page.getByText('ivysaur')).toBeVisible();
-        await expect(page.getByText('this test should fail so I can test my workflow')).toBeVisible();
+        await expect(page.getByText('Pokémon and Pokémon character names are trademarks of Nintendo.')).toBeVisible();
     });
     test('User can navigate', async({page}) => {
         await page.goto('');
