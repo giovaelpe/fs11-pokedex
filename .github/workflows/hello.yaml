@@ -16,8 +16,14 @@ jobs:
             run: echo "Hello World!"
           - name: Run date
             run: date
-          - name: Run ls -l
-            run: ls -l
-          - name: Testing skip
-            if: ${{!contains(join(github.event.commits.*.message, ''), '#skip')}}
-            run: echo 'se imprime porque no hay skip'
+    list:
+        runs-on: ubuntu-latest
+        steps:
+          - name: list files and directories
+            run: ls -l 
+    testing_skip:
+        runs-on: ubuntu-latest
+        if: ${{!contains(join(github.event.commits.*.message, ''), '#skip')}}
+        steps:
+          - name: it will skip this job
+            run: echo 'se imprime porque no hay slip'
