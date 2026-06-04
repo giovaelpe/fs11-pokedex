@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - pokemon-color
 jobs:
   deploy:
     name: Deploy app
