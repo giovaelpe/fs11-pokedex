@@ -27,6 +27,7 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           color: 0x00ff00
           title: deploy successful!
+          username: giovaelpe
   discord-failure:
     needs: deploy
     runs-on: ubuntu-latest
@@ -37,3 +38,5 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           color: 0xff0000
           title: deplay failed!
+          username: giovaelpe
+          
