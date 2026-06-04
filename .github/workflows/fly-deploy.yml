@@ -17,3 +17,23 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  discord-success:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: ${{success()}}
+    steps:
+      - uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: 0x00ff00
+          title: deploy successful!
+  discord-failure:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: ${{failure()}}
+    steps:
+      - uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: 0xff0000
+          title: deplay failed!
